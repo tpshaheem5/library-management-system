@@ -20,8 +20,10 @@ mongoose.connect("mongodb://127.0.0.1:27017/LMSDB")
 app.use(express.json())
 
 const userRouter = require("./Routes/userRoutes");
-app.use("/users", userRouter);
+const adminRouter = require ("./Routes/adminRoutes")
 
+app.use("/users", userRouter);
+app.use("/admin",adminRouter);
 
 app.listen(5000, () => {
     console.log("Server started on port 5000");
