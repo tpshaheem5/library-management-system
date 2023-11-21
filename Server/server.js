@@ -22,8 +22,10 @@ app.use(express.json())
 const userRouter = require("./Routes/userRoutes");
 const adminRouter = require ("./Routes/adminRoutes")
 
-app.use("/users", userRouter);
+
+app.use("/user", userRouter);
 app.use("/admin",adminRouter);
+
 
 app.listen(5000, () => {
     console.log("Server started on port 5000");
