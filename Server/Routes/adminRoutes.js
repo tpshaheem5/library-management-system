@@ -7,7 +7,7 @@ const tryCatch = require("../middlware/tryCatch")
 
 router.post('/login', tryCatch(adminController));
 
-router.post("/addbooks",bookController.addBook)
+router.post("/addbooks",tryCatch(bookController.addBook))
 router.get("/allbooks",tryCatch(bookController.getAllBooks))
 router.get("books/:bookId",tryCatch(bookController.getBookDetails))
 router.put("books/:bookId",tryCatch(bookController.updateBookDetails))
