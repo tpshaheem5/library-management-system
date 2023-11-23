@@ -9,10 +9,10 @@ const booksSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  // image:{
-  //   type:String,
-  //   required:true,
-  // },
+  image:{
+    type:String,
+    required:true,
+  },
   isbn: {
     type: String,
     required: true,
