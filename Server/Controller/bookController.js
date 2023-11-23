@@ -2,26 +2,29 @@ const bookSchema = require("../Model/booksDatabase.js");
 
 const addBook = async (req, res) => {
   try {
-    const { id, title, author, isbn, totalCopies, availableCopies } = req.body;
-    const existingBook = await bookSchema.findOne({ isbn });
-
+    const {  title, author,image, isbn, totalCopies, availableCopies } = req.body;
+    const existingBook = await bookSchema.findOne({ isbn:isbn });
+    
     if (existingBook) {
       return res.status(400).json({ error: "Book with this ISBN already exists" });
+    }else{
+        const newBook = await bookSchema.create({
+
+            title,
+            image,
+            author,
+            isbn,
+            totalCopies,
+            availableCopies,
+          });
+      
+          // Save the new book to the database
+        //   await newBook.save();
+          res.status(201).json({ message: "Book added successfully" ,data:newBook});
     }
 
     // create a new book instance
-    const newBook = new bookSchema({
-      id,
-      title,
-      author,
-      isbn,
-      totalCopies,
-      availableCopies,
-    });
-
-    // Save the new book to the database
-    await newBook.save();
-    res.status(201).json({ message: "Book added successfully" });
+  
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Internal Server Error", error_message: error.message });
