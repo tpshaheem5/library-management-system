@@ -54,7 +54,7 @@ const  getBookDetails = async (req,res)=>{
     console.error(error)
     res.status(500).json({error:"Internal Server error",error_message: error.message})
     }
-}
+} 
 
 const updateBookDetails = async (req, res) => {
     try {

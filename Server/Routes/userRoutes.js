@@ -13,7 +13,7 @@ router.post("/signup",tryCatch(userController.signup))
 router.post("/login",tryCatch(userController.login))
 
 router.get("/allbooks",tryCatch(books.getAllBooks))
-router.get("/book/:bookId",tryCatch(books.getBookDetails))
+router.get("/book",tryCatch(books.getBookDetails))
 // router.get("/search",tryCatch(books.searchBooks))
 
 
